@@ -14,11 +14,11 @@ extern "C"{
 #define LED_PIN 25
 
 // AP settings
-const char AP_ssid[] = "J_family";
-const char AP_password[] = "1@&R_h&w_jomaa";
+const char AP_ssid[] = "YOU_ROUTER_SSID";
+const char AP_password[] = "YOUR_ROUTER_PASSWORD";
 // MQTT Broker config
-const char Broker_server[] = "192.168.1.103";
-const int Broker_port = 1883;
+const char Broker_server[] = "YOUR_BROKER_IP";
+const int Broker_port = 1883; // use one of mqtt standard port
 const char Broker_user[] ="";
 const char Broker_password[] ="";
 // MQTT client settings
@@ -53,7 +53,7 @@ void setup() {
   //************ config MQTT client ************//
   // init MQTT client
   Serial.println("Init MQTT client");
-  if(mqtt_client_init(&myMQTTClient, (char*)Broker_server, 1883, (char*)MQTT_client_id) != 0){
+  if(mqtt_client_init(&myMQTTClient, (char*)Broker_server, Broker_port, (char*)MQTT_client_id) != 0){
     Serial.println("Problem in init mqtt client");
   }
   // connect to Broker
